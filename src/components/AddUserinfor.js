@@ -1,6 +1,6 @@
 import React from "react";
 
-class Userinfor extends React.Component {
+class AddUserinfor extends React.Component {
   state = {
     name: "Eric",
     address: "Hoi dan it",
@@ -26,6 +26,11 @@ class Userinfor extends React.Component {
   handleOnSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
+    this.props.handleAddNewUser({
+      id: Date.now() + "-random",
+      name: this.state.name,
+      age: this.state.age,
+    });
   };
   render() {
     return (
@@ -52,4 +57,4 @@ class Userinfor extends React.Component {
   }
 }
 
-export default Userinfor;
+export default AddUserinfor;
