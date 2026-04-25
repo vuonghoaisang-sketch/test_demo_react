@@ -5,14 +5,23 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import User from "./components/Header/User/User";
+import Admin from "./components/Admin/Admin";
+import HomePage from "./components/Header/Home/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="users" element={<User />} />
+          <Route path="admins" element={<Admin />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}
   </Provider>,
