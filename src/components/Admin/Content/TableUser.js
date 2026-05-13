@@ -4,6 +4,7 @@ const TableUSer = (props) => {
   //const listUsers = props
   return (
     <>
+      {/* table hover */}
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
@@ -25,7 +26,12 @@ const TableUSer = (props) => {
                   <td>{item.email}</td>
                   <td>{item.role}</td>
                   <td>
-                    <button className="btn btn-secondary">View</button>
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => props.handleClickBtnView(item)}
+                    >
+                      View
+                    </button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}

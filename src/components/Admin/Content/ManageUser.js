@@ -11,12 +11,15 @@ import ModelUpdateUser from "./ModelUpdateUser";
 import ModelDeleteUser from "./ModelDeleteUser";
 import TableUserPaginate from "./TableUserPaginate";
 import { set } from "lodash";
+import ModelViewUser from "./ModelViewUser";
 const ManageUser = (props) => {
   const LIMIT_USER = 3;
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModelCreateUser, setShowModelCreateUser] = useState(false);
   const [showModelUpdateUser, setShowModelUpdateUser] = useState(false);
+  const [showModelViewUser, setShowModelViewUser] = useState(false);
+  const [dataView, setDataView] = useState({});
   const [dataUpdate, setDataUpdate] = useState({});
   const [showModelDeleteUser, setShowModelDeleteUser] = useState(false);
   const [dataDelete, setDataDelete] = useState({});
@@ -50,6 +53,10 @@ const ManageUser = (props) => {
     setShowModelDeleteUser(true);
     setDataDelete(user);
   };
+  const handleClickBtnView = (user) => {
+    setShowModelViewUser(true);
+    setDataView(user);
+  };
   return (
     <div className="manage-user-container">
       <div className="title">Manage Users</div>
@@ -72,6 +79,7 @@ const ManageUser = (props) => {
             listUsers={listUsers}
             handleClickBtnUpdate={handleClickBtnUpdate}
             handleClickBtnDelete={handleClickBtnDelete}
+            handleClickBtnView={handleClickBtnView}
             fetchListUsersWithPaginate={fetchListUsersWithPaginate}
             pageCount={pageCount}
             currentPage={currentPage}
@@ -104,6 +112,11 @@ const ManageUser = (props) => {
           fetchListUsersWithPaginate={fetchListUsersWithPaginate}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+        />
+        <ModelViewUser
+          show={showModelViewUser}
+          setShow={setShowModelViewUser}
+          dataView={dataView}
         />
       </div>
     </div>

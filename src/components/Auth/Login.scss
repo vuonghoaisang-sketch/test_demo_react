@@ -3,6 +3,19 @@
     height: 45px;
     text-align: right;
     border: 1px solid #e00c0c;
+    padding: 5px 100px 0 100px;
+
+    button {
+      padding: 3px 15px;
+      margin-left: 15px;
+      border-radius: 5px;
+      background: white;
+      border: 1px solid;
+      &:hover {
+        background-color: #302453;
+        color: white;
+      }
+    }
   }
   .title {
     font-size: 25px;
@@ -30,6 +43,9 @@
       &:hover {
         background-color: #262926;
       }
+    }
+    .back {
+      cursor: pointer;
     }
   }
 }

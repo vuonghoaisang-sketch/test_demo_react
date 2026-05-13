@@ -5,8 +5,6 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { TbOctagonPlusFilled } from "react-icons/tb";
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Admin = (props) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -24,17 +22,6 @@ const Admin = (props) => {
           <Outlet />
         </div>
       </div>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };

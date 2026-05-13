@@ -126,6 +126,7 @@ const ModelCreateUser = (props) => {
               </select>
             </div>
             <div className="col-md-12">
+              {/* htmlFor và id liên kết nhau bấm cái này sẽ liên kết cái kìa */}
               <label className="form-label label-upload" htmlFor="labelUpload">
                 <FcPlus /> Upload
               </label>

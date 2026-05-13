@@ -1,3 +1,4 @@
+//File này dùng để customize lại axios, có thể thêm các interceptor để xử lý request và response
 import axios from "axios";
 const instance = axios.create({
   baseURL: "http://localhost:8081/",
@@ -17,7 +18,6 @@ instance.interceptors.request.use(
 // Add a response interceptor
 instance.interceptors.response.use(
   function (response) {
-    console.log(">>> check response: ", response);
     // Any status code that lies within the range of 2xx causes this function to trigger
     // Do something with response data
     return response && response.data ? response.data : response;

@@ -9,7 +9,7 @@ const Header = () => {
   const handleLogin = () => {
     navigate("/login");
   };
-
+  //Đây là thành điều hướng
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -40,7 +40,11 @@ const Header = () => {
             >
               Log in
             </button>
-            <button className="btn-signup" type="button">
+            <button
+              className="btn-signup"
+              type="button"
+              onClick={() => navigate("/register")}
+            >
               Sign Up
             </button>
             {/* <NavDropdown title="Settings" id="basic-nav-dropdown">
