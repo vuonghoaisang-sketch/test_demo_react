@@ -3,19 +3,46 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/apiServices";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { doLogin } from "../../redux/action/userAction";
+import { FaSpinner } from "react-icons/fa";
+import { set } from "lodash";
+
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      );
+  };
+
   const handleLogin = async () => {
+    if (!validateEmail(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (!password) {
+      toast.error("Please enter your password.");
+      return;
+    }
+    setIsLoading(true);
     let data = await postLogin(email, password);
-    console.log(">>> check data login: ", data);
+    setIsLoading(false);
     if (data && +data.EC === 0) {
+      dispatch(doLogin(data));
       toast.success(data.EM);
+      setIsLoading(false);
       navigate("/");
     }
     if (data && +data.EC !== 0) {
       toast.error(data.EM);
+      setIsLoading(false);
     }
   };
   return (
@@ -47,8 +74,13 @@ const Login = (props) => {
         </div>
         <span className="forgot-password">Forgot password?</span>
         <div>
-          <button className="btn-submit" onClick={() => handleLogin()}>
-            Login to SangVuong
+          <button
+            className="btn-submit"
+            onClick={() => handleLogin()}
+            disabled={isLoading}
+          >
+            {isLoading === true && <FaSpinner className="loader-icon" />}
+            <span>Login to SangVuong</span>
           </button>
         </div>
         <div className="text-center">

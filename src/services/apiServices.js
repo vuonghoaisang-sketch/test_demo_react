@@ -1,6 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import axios from "../utils/axiosCustomize";
+import { delay } from "lodash";
 
 const postCreateUser = ({ email, password, username, role, image }) => {
   const data = new FormData();
@@ -34,6 +35,7 @@ const postLogin = (userEmail, userPassword) => {
   return axios.post("api/v1/login", {
     email: userEmail,
     password: userPassword,
+    delay: 3000,
   });
 };
 const postRegister = (email, password, username) => {
