@@ -1,0 +1,32 @@
+.quiz-container {
+  // padding: 15px;
+
+  .title {
+    font-size: 27px;
+    font-weight: 600;
+  }
+
+  legend {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .list-detail {
+    padding: 15px;
+  }
+}
+
+.modal-add-user {
+  .img-preview {
+    border: 1px dashed #d6113c;
+    height: 150px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

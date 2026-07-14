@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { TbOctagonPlusFilled } from "react-icons/tb";
 import React from "react";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 const Admin = (props) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -17,9 +18,12 @@ const Admin = (props) => {
         <div className="admin-header">
           <FaBars onClick={() => setCollapsed(!collapsed)} />
         </div>
-
         <div className="admin-main">
-          <Outlet />
+          {" "}
+          <PerfectScrollbar>
+            {" "}
+            <Outlet />
+          </PerfectScrollbar>
         </div>
       </div>
     </div>
