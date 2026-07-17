@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { postRegister } from "../../services/apiServices";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import Languages from "../Header/Languages";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const Register = () => {
       <div className="header">
         <span>Already have an account?</span>
         <button onClick={() => navigate("/login")}>Login</button>
+        <Languages />
       </div>
 
       <div className="title">SangVuong</div>

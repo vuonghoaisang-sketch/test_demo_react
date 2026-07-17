@@ -13,7 +13,8 @@ import ListQuiz from "./components/Header/User/ListQuiz";
 import DetailQuiz from "./components/Header/User/DetailQuiz";
 import ManageQuiz from "./components/Admin/Content/Quiz/ManageQuiz";
 import Questions from "./components/Admin/Content/Question/Questions";
-
+import PrivateRoute from "./routes/PrivateRoute";
+import React, { Suspense } from "react";
 const NotFound = () => {
   return (
     <div className="container mt-3 alert alert-danger">Not Found Data</div>
@@ -21,15 +22,29 @@ const NotFound = () => {
 };
 const Layout = (props) => {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       {" "}
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="users" element={<ListQuiz />} />
+          <Route
+            path="users"
+            element={
+              <PrivateRoute>
+                <ListQuiz />
+              </PrivateRoute>
+            }
+          />
         </Route>
         <Route path="/quiz/:id" element={<DetailQuiz />} />
-        <Route path="/admins" element={<Admin />}>
+        <Route
+          path="/admins"
+          element={
+            <PrivateRoute>
+              <Admin />
+            </PrivateRoute>
+          }
+        >
           <Route path="users" element={<User />} />
           <Route index element={<DashBoard />} />
           <Route path="manage-users" element={<ManageUser />} />
@@ -38,6 +53,7 @@ const Layout = (props) => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/test" element={<PrivateRoute />} />
         <Route path="*" element={<NotFound />} />
       </Routes>{" "}
       <ToastContainer
@@ -51,7 +67,7 @@ const Layout = (props) => {
         draggable
         pauseOnHover
       />
-    </>
+    </Suspense>
   );
 };
 export default Layout;
