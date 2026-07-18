@@ -34,6 +34,10 @@ instance.interceptors.response.use(
   },
   function (error) {
     NProgress.done();
+    //token expired
+    if (error.response.data && error.response.data.EC === -999) {
+      window.location.href = "/login";
+    }
     // Any status codes that fall outside the range of 2xx cause this function to trigger
     // Do something with response error
     return error && error.response && error.response.data
