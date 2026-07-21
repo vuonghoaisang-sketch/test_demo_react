@@ -5,5 +5,17 @@
     "title3": {
       "login": "Get's started.It's free"
     }
+  },
+  "dashboard": {
+    "title": "Analytics Dashboard",
+    "users": "Total Users",
+    "quizzes": "Total Quizzes",
+    "questions": "Total Questions",
+    "answers": "Total Answers",
+    "data": {
+      "name1": "Quizzes",
+      "name2": "Questions",
+      "name3": "Answers"
+    }
   }
 }

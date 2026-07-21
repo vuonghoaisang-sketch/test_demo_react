@@ -5,5 +5,17 @@
     "title3": {
       "login": "Bat dau nao. No mien phi day"
     }
+  },
+  "dashboard": {
+    "title": "Bảng thống kê",
+    "users": "Tổng người dùng",
+    "quizzes": "Tổng bài thi",
+    "questions": "Tổng câu hỏi",
+    "answers": "Tổng đáp án",
+    "data": {
+      "name1": "Bài kiểm tra trắc nghiệm",
+      "name2": "Câu hỏi",
+      "name3": "Câu trả lời"
+    }
   }
 }
